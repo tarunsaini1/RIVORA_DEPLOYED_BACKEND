@@ -140,3 +140,21 @@ npm run server
 | notify     | Emit notification                 |
 | message    | Chat messages                     |
 | heartbeat  | Custom health-check ping/pong     |
+
+
+
+
+## 📁 Deployment
+
+- Deployed on **Vercel**
+- Custom server configured using `vercel.json`
+- Uses `server.js` as the entry point
+
+---
+
+## 🛠️ Future Improvements
+
+- Admin panel for user/project management
+- Role-based access control (RBAC)
+- Rate limiting and throttling
+- Unit and integration tests
