@@ -6,17 +6,20 @@ Welcome to the **RIVORA** backend server repository! This project powers the bac
 ---
 
 ## 📁 Project Structure
+
+```text
 RIVORA_DEPLOYED_BACKEND-main/
 │
-├── config/ # Configuration files (DB, Redis, Cloudinary, Nodemailer, etc.)
-├── route/ # API route handlers for various modules
-├── Service/ # Custom services like sockets, notification handling
-├── authmiddleware/ # Middlewares for authentication and validation
-├── middleware/ # Global error handlers, etc.
-├── .env.local # Environment-specific secrets/configs
-├── server.js # Main entry point of the application
-├── package.json # Project dependencies and scripts
-└── vercel.json # Vercel deployment configuration
+├── config/                 # Configuration files (DB, Redis, Cloudinary, Nodemailer, etc.)
+├── route/                  # API route handlers for various modules
+├── Service/                # Custom services like sockets, notification handling
+├── authmiddleware/         # Middlewares for authentication and validation
+├── middleware/             # Global error handlers, etc.
+├── .env.local              # Environment-specific secrets/configs
+├── server.js               # Main entry point of the application
+├── package.json            # Project dependencies and scripts
+└── vercel.json             # Vercel deployment configuration
+
 
 ---
 
