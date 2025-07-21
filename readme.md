@@ -53,13 +53,12 @@ RIVORA_DEPLOYED_BACKEND-main/
 ```bash
 git clone https://github.com/yourusername/RIVORA_DEPLOYED_BACKEND.git
 cd RIVORA_DEPLOYED_BACKEND
-2. Install Dependencies
-bash
-Copy
-Edit
+```
+### 2. Install Dependencies
 npm install
-3. Setup Environment Variables
+### 3. Setup Environment Variables
 Create a .env.local file in the root directory and add:
+```bash
 PORT=4000
 MONGO_URI=your_mongo_connection_string
 SESSION_SECRET=your_secret
@@ -71,77 +70,70 @@ REDIS_URL=your_redis_url
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 JWT_SECRET=your_jwt_secret
-4. Run Development Server
-bash
-Copy
-Edit
+```
+### 4. Run Development Server
+
 npm run server
-🌐 API Overview
-Method	Endpoint	Description
-GET	/	Test endpoint
-POST	/api/auth	OAuth & Auth routes
-POST	/api/projects	Create project
-GET	/api/tasks/:projectId	Get tasks for a project
-POST	/api/tasks	Add task
-POST	/api/ai/query	Send prompt to AI
-POST	/api/invites/send	Send project invite
-GET	/api/notifications	Fetch notifications
-GET	/api/teams	Get team details
+
+
+🌐 ## 🌐 API Overview
+
+| Method | Endpoint               | Description                    |
+|--------|------------------------|--------------------------------|
+| GET    | `/`                    | Test endpoint                  |
+| POST   | `/api/auth`            | OAuth & Auth routes            |
+| POST   | `/api/projects`        | Create project                 |
+| GET    | `/api/tasks/:projectId`| Get tasks for a project        |
+| POST   | `/api/tasks`           | Add task                       |
+| POST   | `/api/ai/query`        | Send prompt to AI              |
+| POST   | `/api/invites/send`    | Send project invite            |
+| GET    | `/api/notifications`   | Fetch notifications            |
+| GET    | `/api/teams`           | Get team details               |
+
 
 🔐 Note: Most routes require authentication (cookie or JWT-based).
 
-🧩 Application Flow
-1. User Authentication
-User logs in via Google OAuth
+🧩## 🧩 Application Flow
 
-Backend verifies token and stores session using Redis
+1. **User Authentication**
+   - User logs in via **Google OAuth**
+   - Backend verifies token and stores session using **Redis**
+   - Session maintained using **cookies**
 
-Session maintained using cookies
+2. **Project/Task Management**
+   - Users can create & assign tasks
+   - Subtasks supported
+   - Calendar sync for deadlines
 
-2. Project/Task Management
-Users can create & assign tasks
+3. **Chat & Notification**
+   - Real-time chat using **Socket.io**
+   - `notificationSocket.js` handles events
+   - Notifications stored & served using **Redis + MongoDB**
 
-Subtasks supported
+4. **AI Assistance**
+   - Users can query AI for help (generate text, suggestions)
+   - Uses `/api/ai` endpoint
 
-Calendar sync for deadlines
+5. **Performance Tracking**
+   - Endpoint `/api/analytics/performance` provides analytics
+   - Tracks user activity & task completion
 
-3. Chat & Notification
-Real-time chat using socket.io
+---
 
-notificationSocket.js handles events
+## 🧠 Key Files
 
-Notifications stored & served using Redis + MongoDB
+- `server.js` — Entry point, initializes DB, routes, and sockets
+- `config/db.js` — MongoDB connection
+- `Service/notificationSocket.js` — Socket connections & events
+- `route/` — Organized feature routes (auth, task, chat, ai, etc.)
 
-4. AI Assistance
-Users can query AI for help (generate text, suggestions)
+---
 
-Uses /api/ai endpoint
+## ⚡ Socket.io Events (Live Features)
 
-5. Performance Tracking
-Endpoint /api/analytics/performance provides analytics
-
-Tracks user activity & task completion
-
-🧠 Key Files
-server.js — Entry point, initializes DB, routes, and sockets
-
-config/db.js — MongoDB connection
-
-Service/notificationSocket.js — Socket connections & events
-
-route/ — Organized feature routes (auth, task, chat, ai, etc.)
-
-⚡ Socket.io Events (Live Features)
-Event Name	Description
-connect	On client connection
-notify	Emit notification
-message	Chat messages
-heartbeat	Custom health-check ping/pong
-
-📁 Deployment
-Deployed on Vercel
-
-Custom server configured using vercel.json
-
-Uses server.js as the entry point
-
+| Event Name | Description                       |
+|------------|-----------------------------------|
+| connect    | On client connection              |
+| notify     | Emit notification                 |
+| message    | Chat messages                     |
+| heartbeat  | Custom health-check ping/pong     |
