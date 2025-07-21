@@ -19,7 +19,7 @@ RIVORA_DEPLOYED_BACKEND-main/
 ├── server.js               # Main entry point of the application
 ├── package.json            # Project dependencies and scripts
 └── vercel.json             # Vercel deployment configuration
-
+```
 
 ---
 
