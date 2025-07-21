@@ -1,60 +1,56 @@
-🚀 RIVORA Backend
-Welcome to the RIVORA backend server repository! This project powers the backend services for the RIVORA application, providing RESTful APIs, real-time socket communication, authentication, task/project management, and AI integration.
 
-📁 Project Structure
-bash
-Copy
-Edit
+# 🚀 RIVORA Backend
+
+Welcome to the **RIVORA** backend server repository! This project powers the backend services for the RIVORA application, providing RESTful APIs, real-time socket communication, authentication, task/project management, and AI integration.
+
+---
+
+## 📁 Project Structure
 RIVORA_DEPLOYED_BACKEND-main/
 │
-├── config/                 # Configuration files (DB, Redis, Cloudinary, Nodemailer, etc.)
-├── route/                  # API route handlers for various modules
-├── Service/                # Custom services like sockets, notification handling
-├── authmiddleware/         # Middlewares for authentication and validation
-├── middleware/             # Global error handlers, etc.
-├── .env.local              # Environment-specific secrets/configs
-├── server.js               # Main entry point of the application
-├── package.json            # Project dependencies and scripts
-└── vercel.json             # Vercel deployment configuration
-🧠 Key Features
-🧑‍💻 Authentication & Authorization (OAuth & JWT)
+├── config/ # Configuration files (DB, Redis, Cloudinary, Nodemailer, etc.)
+├── route/ # API route handlers for various modules
+├── Service/ # Custom services like sockets, notification handling
+├── authmiddleware/ # Middlewares for authentication and validation
+├── middleware/ # Global error handlers, etc.
+├── .env.local # Environment-specific secrets/configs
+├── server.js # Main entry point of the application
+├── package.json # Project dependencies and scripts
+└── vercel.json # Vercel deployment configuration
 
-🧠 AI-powered assistance via Google Generative AI
+---
 
-📁 Task & Project Management with calendar integration
+## 🧠 Key Features
 
-🔔 Real-time Notifications using socket.io
+- 🧑‍💻 **Authentication & Authorization** (OAuth & JWT)
+- 🧠 **AI-powered assistance** via Google Generative AI
+- 📁 **Task & Project Management** with calendar integration
+- 🔔 **Real-time Notifications** using socket.io
+- 📦 **Cloud Uploads** using Cloudinary
+- 🧑‍🤝‍🧑 **Team Collaboration Tools**
+- 📊 **User Performance Analytics**
+- 📤 **File Uploads** (PDF, Word) with text extraction
 
-📦 Cloud Uploads using Cloudinary
+---
 
-🧑‍🤝‍🧑 Team Collaboration Tools
+## ⚙️ Technologies Used
 
-📊 User Performance Analytics
+- **Node.js**, **Express.js**
+- **MongoDB** with Mongoose
+- **Socket.io** for real-time communication
+- **Redis** for session management and pub/sub
+- **Google OAuth & Generative AI APIs**
+- **Multer**, **Cloudinary** for file uploads
+- **PDF Parsing**, **DOCX Extraction**
+- **Nodemailer** for email notifications
 
-📤 File Uploads (PDF, Word) with text extraction
+---
 
-⚙️ Technologies Used
-Node.js, Express.js
+## 📦 Setup Instructions
 
-MongoDB with Mongoose
+### 1. Clone the Repository
 
-Socket.io for real-time communication
-
-Redis for session and pub/sub
-
-Google OAuth & AI APIs
-
-Multer, Cloudinary for file uploads
-
-PDF parsing, Docx extraction
-
-Nodemailer for email notifications
-
-📦 Setup Instructions
-1. Clone the Repository
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/yourusername/RIVORA_DEPLOYED_BACKEND.git
 cd RIVORA_DEPLOYED_BACKEND
 2. Install Dependencies
@@ -63,11 +59,7 @@ Copy
 Edit
 npm install
 3. Setup Environment Variables
-Create a .env.local file with the following keys:
-
-env
-Copy
-Edit
+Create a .env.local file in the root directory and add:
 PORT=4000
 MONGO_URI=your_mongo_connection_string
 SESSION_SECRET=your_secret
@@ -96,62 +88,60 @@ POST	/api/invites/send	Send project invite
 GET	/api/notifications	Fetch notifications
 GET	/api/teams	Get team details
 
-Note: Most routes require authentication (cookie or JWT-based).
+🔐 Note: Most routes require authentication (cookie or JWT-based).
 
 🧩 Application Flow
 1. User Authentication
-User logs in via Google OAuth.
+User logs in via Google OAuth
 
-Backend verifies and stores session using Redis.
+Backend verifies token and stores session using Redis
 
-Session maintained via cookies.
+Session maintained using cookies
 
 2. Project/Task Management
-User can create and assign tasks.
+Users can create & assign tasks
 
-Subtasks are supported.
+Subtasks supported
 
-Calendar sync for deadline visualization.
+Calendar sync for deadlines
 
 3. Chat & Notification
-Real-time messages using socket.io.
+Real-time chat using socket.io
 
-notificationSocket.js handles events and emits updates.
+notificationSocket.js handles events
 
-Notifications stored and served via Redis & DB.
+Notifications stored & served using Redis + MongoDB
 
 4. AI Assistance
-Users can query the AI (e.g., ask for suggestions, generate text).
+Users can query AI for help (generate text, suggestions)
 
-Handled via route: /api/ai.
+Uses /api/ai endpoint
 
 5. Performance Tracking
-API /api/analytics/performance provides analytics.
+Endpoint /api/analytics/performance provides analytics
 
-Tracks user activity and task completion.
+Tracks user activity & task completion
 
 🧠 Key Files
-server.js: Main file initializing all routes, socket, DB.
+server.js — Entry point, initializes DB, routes, and sockets
 
-config/db.js: MongoDB connection logic.
+config/db.js — MongoDB connection
 
-Service/notificationSocket.js: Handles socket connection, heartbeat, notification broadcasting.
+Service/notificationSocket.js — Socket connections & events
 
-route/: Organized by feature (auth, project, task, chat, AI).
+route/ — Organized feature routes (auth, task, chat, ai, etc.)
 
 ⚡ Socket.io Events (Live Features)
-connect: On client connection
-
-notify: Emit notification
-
-message: Chat events
-
-heartbeat: Custom health-check ping/pong
+Event Name	Description
+connect	On client connection
+notify	Emit notification
+message	Chat messages
+heartbeat	Custom health-check ping/pong
 
 📁 Deployment
-Deployed using Vercel:
+Deployed on Vercel
 
-vercel.json contains custom server config.
+Custom server configured using vercel.json
 
-Uses node server.js as the main entry.
+Uses server.js as the entry point
 
